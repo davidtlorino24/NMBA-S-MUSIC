@@ -1,0 +1,163 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* Styling the background image by 
+        giving its url and position */
+.container {
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://media.geeksforgeeks.org/wp-content/uploads/20210402235143/background.jpg");
+
+  /* Image used: */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Styling the list tags to the 
+        right of the navigation bar */
+.nav li {
+  float: right;
+  list-style: none;
+}
+
+/* Styling the anchor tags of 
+        the navigation bar */
+.nav a {
+  list-style: none;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1rem;
+  font-weight: 550;
+  display: block;
+  padding: 5px 35px;
+  color: black;
+  text-decoration: none;
+}
+
+/* Giving position and margin 
+        to the content-div */
+.content {
+  width: 100%;
+  position: absolute;
+  top: 45%;
+}
+
+/* Styling the left-col by 
+        giving margin */
+.left-col {
+  margin-left: 11%;
+}
+
+/* Styling the my sound placed 
+        in the left-col */
+.left-col h1 {
+  font-size: 80px;
+  color: rgb(42, 250, 0);
+}
+
+/* Styling the right-col */
+.right-col {
+  float: right;
+  margin-right: 10%;
+  margin-top: -5%;
+  display: flex;
+  align-items: center;
+}
+
+/* Styling the text in the right-col */
+.right-col p {
+  font-size: 21px;
+  color: black;
+  font-weight: 650;
+  margin-right: 20px;
+}
+
+/* Styling the cursor type 
+        of the icon to pointer */
+#icon {
+  cursor: pointer;
+}
+.progress-container {
+  width: 100%;
+  background-color: purple;
+  height: 10px;
+  position: relative;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+}
+
+/* Style for each song link */
+#song-list li a {
+  text-decoration: none;
+  color: #12d600;
+  display: block;
+  padding: 5px 0;
+}
+
+/* Style for the buttons */
+button {
+  background-color: #4caf50; /* Green background */
+  color: rgb(163, 4, 255); /* White text */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem; /* Increase font size */
+  margin: 5px 2px;
+  cursor: pointer;
+  border-radius: 5px; /* Rounded corners */
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Container for the song list with a border */
+#song-list {
+  border: 2px solid #ffee00;
+  background-color: black;
+  padding: 10px;
+  margin: 20px 10px;
+  list-style: none;
+  font-size: 1.2rem; /* Increase font size */
+  text-decoration-line: underline overline;
+  color: yellow;
+  text-decoration-thickness: from-font;
+  font-size: 2rem;
+  display: inline-block; /* Adjust background to fit text */
+}
+#current-song {
+  font-size: 2rem;
+  color: rgb(226, 9, 255);
+  text-align: center;
+  font-weight: bold;
+  border: 10px solid #51ff01;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  animation: moveUpDown 5s infinite;
+}
+
+@keyframes moveUpDown {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 90%;
+  }
+  100% {
+    top: 0;
+  }
+}
+#song-list li {
+  padding: 10px 0;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music - NMBA</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <ul class="nav">
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="artists.html">ARTISTS</a></li>
+      <li><a href="music.html">MUSIC</a></li>
+      <li><a href="index.html">HOME</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <h1>Music</h1>
+    <ul id="song-list">
+      <li><a href="#" data-src="Assets/Till Death Do Us Part.mp3">1. Till Death Do Us Part</a></li>
+      <li><a href="#" data-src="Assets/Trap Madness.mp3">2. Trap Madness</a></li>
+      <li><a href="#" data-src="Assets/Universal Love.mp3">3. Universal Love</a></li>
+      <li><a href="#" data-src="Assets/Unspoken Apology.mp3">4. Unspoken Apology</a></li>
+      <li><a href="#" data-src="Assets/Up in Flames.mp3">5. Up in Flames</a></li>
+      <li><a href="#" data-src="Assets/tractors' turned trappers.mp3">6. Tractors' Turned Trappers</a></li>
+      <li><a href="#" data-src="Assets/tractors' turned trappers2.mp3">7. Tractors' Turned Trappers 2</a></li>
+    </ul>
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <audio id="audio-player" controls>
+      <source id="audio-source" src="" type="audio/mp3">
+    </audio>
+    <div>
+      <button id="play">Play</button>
+      <button id="pause">Pause</button>
+      <button id="stop">Stop</button>
+      <button id="next">Next</button>
+    </div>
+    <div id="current-song" class="current-song"></div>
+  </div>
+
+  <script>
+    const audioPlayer = document.getElementById('audio-player');
+    const audioSource = document.getElementById('audio-source');
+    const progressBar = document.getElementById('progress-bar');
+    const songList = document.getElementById('song-list');
+    const playButton = document.getElementById('play');
+    const pauseButton = document.getElementById('pause');
+    const stopButton = document.getElementById('stop');
+    const nextButton = document.getElementById('next');
+    const currentSongDisplay = document.getElementById('current-song');
+    let currentSongIndex = 0;
+
+    const songs = Array.from(songList.getElementsByTagName('a'));
+
+    function loadSong(index) {
+      const song = songs[index];
+      audioSource.src = song.getAttribute('data-src');
+      audioPlayer.load();
+      currentSongDisplay.textContent = `Now Playing: ${song.textContent}`;
+    }
+
+    function playSong() {
+      audioPlayer.play();
+    }
+
+    function pauseSong() {
+      audioPlayer.pause();
+    }
+
+    function stopSong() {
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
+    }
+
+    function nextSong() {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(currentSongIndex);
+      playSong();
+    }
+
+    audioPlayer.ontimeupdate = function () {
+      const percentage = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      progressBar.style.width = percentage + '%';
+    };
+
+    songs.forEach((song, index) => {
+      song.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentSongIndex = index;
+        loadSong(currentSongIndex);
+        playSong();
+      });
+    });
+
+    playButton.addEventListener('click', playSong);
+    pauseButton.addEventListener('click', pauseSong);
+    stopButton.addEventListener('click', stopSong);
+    nextButton.addEventListener('click', nextSong);
+
+    // Load the first song by default
+    loadSong(currentSongIndex);
+  </script>
+</body>
+
+</html>
